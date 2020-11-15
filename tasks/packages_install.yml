@@ -1,0 +1,15 @@
+---
+- name: To install packages on tag1 hosts
+  package:
+    name: "{{ item  }}"
+    state: present
+  loop: "{{ packages_tag1 }}"
+  when: inventory_hostname in groups['tag1']
+
+- name: To install packages on tag2 hosts
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages_tag2 }}"
+  when: inventory_hostname in groups['tag2']
+  
